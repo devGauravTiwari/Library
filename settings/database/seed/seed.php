@@ -43,15 +43,15 @@ class Seed{
 		$student=new Student();
 		$student->name ="Gaurav" ;
 		$student->course ="B.Sc" ;
-		$student->Dob = "12-03-1997";
-		$student->FatherName = "DN Tiwari";
+		$student->Dob = "22-05-1950";
+		$student->FatherName = "PS Tiwari";
 		$student->save();
 
 		$student=new Student();
 		$student->name ="Meenakshi" ;
 		$student->course ="B.Com" ;
-		$student->Dob = "19-04-1996";
-		$student->FatherName = "DN tiwari";
+		$student->Dob = "29-08-1990";
+		$student->FatherName = "NP tiwari";
 		$student->save();
 }
 }
