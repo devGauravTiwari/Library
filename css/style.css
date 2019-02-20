@@ -1,0 +1,57 @@
+/* basic styling */
+header{
+	min-height: 39px;
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+.product-image a {
+    display: block;
+    width: 100%;
+}
+.product-image a img{
+	min-height: 200px;
+    max-height: 300px;
+    margin: auto auto;
+    display: block;
+}
+.product-image{
+	 border: 1px solid;
+}
+p{
+	margin: 0;
+	margin-top: 5px;
+}
+a {
+    color: black;
+}
+
+li.active a {
+    color: #007bff;
+}
+main input[type="email"],
+main input[type="text"],
+main input[type="password"]{
+    display: block;
+    max-width: 250px;
+    width: 50%;
+    margin: 10px 0;
+}
+main input[type="submit"]{
+    background-color: #343a40;
+    border: navajowhite;
+    padding: 5px 20px;
+}
+.formContent {
+    margin: 0 auto;
+    width: 50%;
+}
+.wrapper {
+    padding: 10px 0;
+}
+@media (max-width: 767px) {
+    header {
+    min-height: 118px;
+    }
+}

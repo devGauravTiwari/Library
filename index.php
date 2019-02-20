@@ -1,0 +1,37 @@
+<?php
+session_start();
+include_once('settings/setup.php');
+if(count($_GET)==0){
+	App::redirect("home");
+}
+if(!isset($_GET['api'])){
+	include_once('settings/parts/head.php');
+	$page="";
+	echo("<main>");
+	if(isset($_GET['page'])){
+		if(file_exists('pages/'.$_GET['page'].".php")){
+			$page=$_GET['page'];
+			if(My::contains($_GET['page'],Env::$ADMINS)){
+				if(isset($_SESSION['Uname'])){
+					include_once('pages/'.$_GET['page'].".php");
+				}else{
+					App::redirect('login');
+				}
+			}else{
+				include_once('pages/'.$_GET['page'].".php");
+			}
+		}else{
+			include_once('pages/pagenotfound.php');
+			$page="page not found";
+		}
+	}else{
+		include_once('pages/home.php');
+		$page="home";
+	}
+	echo("</main>");
+	include_once('settings/parts/foot.php');
+	echo("<script type='text/javascript'>$('title').text('$page');</script>");
+}else{
+	include_once('api/api.php');
+}
+?>

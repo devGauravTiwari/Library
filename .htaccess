@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+	
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+	
+	RewriteCond "%{DOCUMENT_ROOT}/$1" !-d
+	RewriteRule ^/?([a-z]+)$ index.php?page=$1
+	
+	RewriteCond "%{DOCUMENT_ROOT}/$1" !-d
+	RewriteRule ^api/([a-z]+)/(.*)/([a-z]+)/([0-9]+)$ index.php/?api&api_id=$1&api_key=$2&table=$3&id=$4
+	
+	RewriteCond "%{DOCUMENT_ROOT}/$1" !-d
+	RewriteRule ^admin/([a-z]+)/([0-9]+)$ index.php/?page=admin&$1=$2
+	
+	RewriteCond "%{DOCUMENT_ROOT}/$1" !-d
+	RewriteRule ^admin/([a-z]+)$ index.php/?page=admin&$1
+	
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+	
+	
+</IfModule>
